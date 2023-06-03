@@ -24,6 +24,7 @@
 		<button
 			class="btn btn-lg btn-primary pull-xs-right"
 			type="submit"
+			[disabled]="isRegisterPending$ | async"
 		>
 			Sign up
 		</button>

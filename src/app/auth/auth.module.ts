@@ -13,7 +13,7 @@ import { AuthRegisterFormComponent } from './components/auth-register-form/auth-
 		CommonModule,
 		AuthRouting,
 		ReactiveFormsModule,
-		StoreModule.forFeature('Auth', authReducers),
+		StoreModule.forFeature('auth', authReducers),
 	],
 	declarations: [RegisterPage, AuthInputComponent, AuthRegisterFormComponent],
 })
