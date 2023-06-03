@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { AuthService } from '@auth/services/auth.service'
 import {
@@ -17,7 +18,9 @@ export class RegisterEffect {
 			switchMap(({ request }) =>
 				this.authService.register(request).pipe(
 					map((user: UserInterface) => registerSuccessAction({ user })),
-					catchError(() => of(registerFailureAction())),
+					catchError((errorResponse: HttpErrorResponse) =>
+						of(registerFailureAction({ errors: errorResponse.error.errors })),
+					),
 				),
 			),
 		),
