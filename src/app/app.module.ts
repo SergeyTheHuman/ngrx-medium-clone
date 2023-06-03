@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http'
 import { isDevMode, NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { StoreModule } from '@ngrx/store'
@@ -10,6 +11,7 @@ import { AuthModule } from '@src/app/auth/auth.module'
 	declarations: [AppComponent],
 	imports: [
 		BrowserModule,
+		HttpClientModule,
 		AppRouting,
 		AuthModule,
 		StoreModule.forRoot({}, {}),
