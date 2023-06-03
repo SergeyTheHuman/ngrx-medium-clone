@@ -6,7 +6,10 @@
 				<p class="text-xs-center">
 					<a [routerLink]="['/login']">Have an account?</a>
 				</p>
-				Backend error are here
+				<mc-backend-error-messages
+					*ngIf="validationErrors$ | async"
+					[errors]="validationErrors$ | async"
+				></mc-backend-error-messages>
 				<mc-auth-register-form></mc-auth-register-form>
 			</div>
 		</div>
