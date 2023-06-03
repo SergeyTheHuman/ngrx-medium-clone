@@ -14,7 +14,7 @@ export class AuthRegisterFormComponent {
 	ngOnInit(): void {
 		this.initializeForm()
 	}
-	
+
 	initializeForm(): void {
 		this.form = new FormGroup({
 			username: new FormControl<string>('', [
