@@ -7,6 +7,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 import { AppComponent } from '@src/app/app.component'
 import { AppRouting } from '@src/app/app.routing'
 import { AuthModule } from '@src/app/auth/auth.module'
+import { HeaderComponent } from './shared/components/header/header.component'
 
 @NgModule({
 	declarations: [AppComponent],
@@ -15,6 +16,7 @@ import { AuthModule } from '@src/app/auth/auth.module'
 		HttpClientModule,
 		AppRouting,
 		AuthModule,
+		HeaderComponent,
 		StoreModule.forRoot({}),
 		StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
 		EffectsModule.forRoot([]),

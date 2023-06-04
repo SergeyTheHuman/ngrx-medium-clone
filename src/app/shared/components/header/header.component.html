@@ -1,0 +1,27 @@
+<div class="navbar navbar-light">
+	<div class="container">
+		<a
+			[routerLink]="['/']"
+			class="navbar-brand"
+			>Medium</a
+		>
+
+		<ul class="nav navbar-nav pull-xs-right">
+			<li class="nav-item">
+				<a
+					[routerLink]="['/']"
+					class="nav-link"
+					>Home</a
+				>
+			</li>
+			<mc-logged-in-menu
+				*ngIf="isLoggedIn$ | async"
+				remove-host
+			></mc-logged-in-menu>
+			<mc-anonymous-menu
+				*ngIf="isAnonymous$ | async"
+				remove-host
+			></mc-anonymous-menu>
+		</ul>
+	</div>
+</div>
