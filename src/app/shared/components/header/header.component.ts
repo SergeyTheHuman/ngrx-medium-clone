@@ -7,7 +7,6 @@ import { userSelector } from '@auth/store/selectors/user.selector'
 import { select, Store } from '@ngrx/store'
 import { AnonymousMenuComponent } from '@shared/components/anonymous-menu/anonymous-menu.component'
 import { LoggedInMenuComponent } from '@shared/components/logged-in-menu/logged-in-menu.component'
-import { RemoveHost } from '@shared/directives/remove-host.directive'
 import { AppStateInterface } from '@shared/types/app-state.interface'
 import { UserInterface } from '@shared/types/user.interface'
 import { Observable } from 'rxjs'
@@ -22,7 +21,6 @@ import { Observable } from 'rxjs'
 		RouterModule,
 		LoggedInMenuComponent,
 		AnonymousMenuComponent,
-		RemoveHost,
 	],
 })
 export class HeaderComponent implements OnInit {

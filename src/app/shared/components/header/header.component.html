@@ -14,14 +14,8 @@
 					>Home</a
 				>
 			</li>
-			<mc-logged-in-menu
-				*ngIf="isLoggedIn$ | async"
-				remove-host
-			></mc-logged-in-menu>
-			<mc-anonymous-menu
-				*ngIf="isAnonymous$ | async"
-				remove-host
-			></mc-anonymous-menu>
+			<mc-logged-in-menu *ngIf="isLoggedIn$ | async"></mc-logged-in-menu>
+			<mc-anonymous-menu *ngIf="isAnonymous$ | async"></mc-anonymous-menu>
 		</ul>
 	</div>
 </div>

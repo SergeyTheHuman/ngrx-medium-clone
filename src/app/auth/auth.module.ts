@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { ReactiveFormsModule } from '@angular/forms'
 import { AuthService } from '@auth/services/auth.service'
+import { GetCurrentUserEffect } from '@auth/store/effects/get-current-user.effect'
 import { LoginEffect } from '@auth/store/effects/login.effect'
 import { RegisterEffect } from '@auth/store/effects/register.effect'
 import { authReducers } from '@auth/store/reducers/reducers'
@@ -22,7 +23,11 @@ import { LoginPage } from './pages/login/login.component'
 		AuthRouting,
 		ReactiveFormsModule,
 		StoreModule.forFeature('auth', authReducers),
-		EffectsModule.forFeature([RegisterEffect, LoginEffect]),
+		EffectsModule.forFeature([
+			RegisterEffect,
+			LoginEffect,
+			GetCurrentUserEffect,
+		]),
 		BackendErrorMessagesComponent,
 	],
 	declarations: [

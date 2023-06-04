@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common'
 import { Component, OnInit } from '@angular/core'
 import { RouterModule } from '@angular/router'
-import { isLoggedInSelector } from '@auth/store/selectors/logged-in.selector'
 import { userSelector } from '@auth/store/selectors/user.selector'
 import { select, Store } from '@ngrx/store'
 import { AppStateInterface } from '@shared/types/app-state.interface'
@@ -16,7 +15,6 @@ import { Observable } from 'rxjs'
 	imports: [RouterModule, CommonModule],
 })
 export class LoggedInMenuComponent implements OnInit {
-	isLoggedIn$!: Observable<boolean | null>
 	user$!: Observable<UserInterface | null>
 
 	constructor(private readonly store: Store<AppStateInterface>) {}
@@ -26,7 +24,6 @@ export class LoggedInMenuComponent implements OnInit {
 	}
 
 	initializeVariables(): void {
-		this.isLoggedIn$ = this.store.pipe(select(isLoggedInSelector))
 		this.user$ = this.store.pipe(select(userSelector))
 	}
 }
