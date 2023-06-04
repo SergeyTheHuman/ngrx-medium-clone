@@ -1,10 +1,10 @@
-import { registerAction } from '@auth/store/actions/register.action'
+import { loginAction } from '@auth/store/actions/login.action'
 import { AuthStateInterface } from '@auth/store/types/auth-state.interface'
 import { on } from '@ngrx/store'
 
-export const onRegister = on(
-	registerAction,
-	(state: AuthStateInterface, action): AuthStateInterface => {
+export const onLogin = on(
+	loginAction,
+	(state: AuthStateInterface): AuthStateInterface => {
 		return {
 			...state,
 			isAuthPending: true,

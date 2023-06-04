@@ -1,14 +1,15 @@
-import { registerAction } from '@auth/store/actions/register.action'
+import { loginSuccessAction } from '@auth/store/actions/login.action'
 import { AuthStateInterface } from '@auth/store/types/auth-state.interface'
 import { on } from '@ngrx/store'
 
-export const onRegister = on(
-	registerAction,
+export const onLoginSuccess = on(
+	loginSuccessAction,
 	(state: AuthStateInterface, action): AuthStateInterface => {
 		return {
 			...state,
-			isAuthPending: true,
-			validationErrors: null,
+			isAuthPending: false,
+			isLoggedIn: true,
+			user: action.user,
 		}
 	},
 )

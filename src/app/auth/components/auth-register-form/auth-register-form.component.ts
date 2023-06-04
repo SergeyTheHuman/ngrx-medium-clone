@@ -1,7 +1,7 @@
 import { Component } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { registerAction } from '@auth/store/actions/register.action'
-import { isRegisterPendingSelector } from '@auth/store/selectors/register-pending.selector'
+import { isAuthPendingSelector } from '@auth/store/selectors/auth-pending.selector'
 import { RegisterRequestInterface } from '@auth/types/register-request.interface'
 import { select, Store } from '@ngrx/store'
 import { AppStateInterface } from '@shared/types/app-state.interface'
@@ -14,7 +14,7 @@ import { Observable } from 'rxjs'
 })
 export class AuthRegisterFormComponent {
 	form!: FormGroup
-	isRegisterPending$!: Observable<boolean>
+	isAuthPending$!: Observable<boolean>
 
 	constructor(private readonly store: Store<AppStateInterface>) {}
 
@@ -42,7 +42,7 @@ export class AuthRegisterFormComponent {
 	}
 
 	initializeVariables(): void {
-		this.isRegisterPending$ = this.store.pipe(select(isRegisterPendingSelector))
+		this.isAuthPending$ = this.store.pipe(select(isAuthPendingSelector))
 	}
 
 	onSubmit(): void {

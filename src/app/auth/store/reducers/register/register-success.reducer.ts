@@ -7,7 +7,7 @@ export const onRegisterSuccess = on(
 	(state: AuthStateInterface, action): AuthStateInterface => {
 		return {
 			...state,
-			isRegisterPending: false,
+			isAuthPending: false,
 			isLoggedIn: true,
 			user: action.user,
 		}

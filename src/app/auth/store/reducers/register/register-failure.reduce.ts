@@ -7,7 +7,7 @@ export const onRegisterFailure = on(
 	(state: AuthStateInterface, action): AuthStateInterface => {
 		return {
 			...state,
-			isRegisterPending: false,
+			isAuthPending: false,
 			validationErrors: action.errors,
 		}
 	},
