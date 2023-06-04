@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common'
-import { Component, OnInit, ViewEncapsulation } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { RouterModule } from '@angular/router'
 import { isLoggedInSelector } from '@auth/store/selectors/logged-in.selector'
 import { userSelector } from '@auth/store/selectors/user.selector'

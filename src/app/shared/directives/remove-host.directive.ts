@@ -2,7 +2,7 @@ import { Directive, ElementRef } from '@angular/core'
 
 @Directive({
 	selector: '[remove-host]',
-	standalone: true
+	standalone: true,
 })
 export class RemoveHost {
 	constructor(private readonly elementRef: ElementRef) {}

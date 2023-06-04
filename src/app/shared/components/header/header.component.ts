@@ -22,7 +22,7 @@ import { Observable } from 'rxjs'
 		RouterModule,
 		LoggedInMenuComponent,
 		AnonymousMenuComponent,
-		RemoveHost
+		RemoveHost,
 	],
 })
 export class HeaderComponent implements OnInit {
