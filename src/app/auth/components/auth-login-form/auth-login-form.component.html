@@ -1,0 +1,26 @@
+<form
+	[formGroup]="form"
+	(submit)="onSubmit()"
+>
+	<fieldset>
+		<mc-auth-input
+			type="email"
+			placeholder="Email"
+			formControlName="email"
+			ngDefaultControl
+		></mc-auth-input>
+		<mc-auth-input
+			type="password"
+			placeholder="Password"
+			formControlName="password"
+			ngDefaultControl
+		></mc-auth-input>
+		<button
+			class="btn btn-lg btn-primary pull-xs-right"
+			type="submit"
+			[disabled]="isAuthPending$ | async"
+		>
+			Sign in
+		</button>
+	</fieldset>
+</form>
