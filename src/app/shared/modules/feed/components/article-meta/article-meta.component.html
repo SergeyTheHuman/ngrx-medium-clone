@@ -1,0 +1,15 @@
+<div class="article-meta">
+	<a [routerLink]="['/profiles', articleInput.author.username]">
+		<img
+			[src]="articleInput.author.image"
+			[alt]="articleInput.author.username"
+		/>
+	</a>
+	<div class="info">
+		<a [routerLink]="['/profiles', articleInput.author.username]">
+			{{ articleInput.author.username }}
+		</a>
+		<span class="date">{{ articleInput.createdAt }}</span>
+	</div>
+	<div class="pull-xs-right">ADD TO FAVOURITES</div>
+</div>

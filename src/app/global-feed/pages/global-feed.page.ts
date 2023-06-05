@@ -5,4 +5,6 @@ import { Component } from '@angular/core'
 	templateUrl: './global-feed.page.html',
 	styleUrls: ['./global-feed.page.scss'],
 })
-export class GlobalFeedPage {}
+export class GlobalFeedPage {
+	apiUrl: string = '/articles'
+}

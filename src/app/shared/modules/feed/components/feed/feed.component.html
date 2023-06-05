@@ -1,1 +1,9 @@
-<p>feed works!</p>
+<div *ngIf="isLoading$ | async">Is loading...</div>
+<div *ngIf="error$ | async">Some error happened!</div>
+<div *ngIf="feed$ | async">
+	<mc-article
+		*ngFor="let article of (feed$ | async)?.articles"
+		[article]="article"
+	></mc-article>
+	PAGINATION
+</div>

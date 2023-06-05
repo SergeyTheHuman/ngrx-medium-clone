@@ -1,0 +1,11 @@
+<div class="article-preview">
+	<mc-article-meta [article]="articleInput"></mc-article-meta>
+	<a
+		[routerLink]="['/articles', articleInput.slug]"
+		class="preview-link"
+	>
+		<h1>{{ articleInput.title }}</h1>
+		<p>{{ articleInput.description }}</p>
+		HERE LIST OF TAGS
+	</a>
+</div>
