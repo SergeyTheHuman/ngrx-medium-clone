@@ -9,6 +9,7 @@ import { PersistanceService } from '@shared/services/persistance.service'
 import { AppComponent } from '@src/app/app.component'
 import { AppRouting } from '@src/app/app.routing'
 import { AuthModule } from '@src/app/auth/auth.module'
+import { GlobalFeedModule } from '@src/app/global-feed/global-feed.module'
 import { HeaderComponent } from './shared/components/header/header.component'
 
 @NgModule({
@@ -18,6 +19,7 @@ import { HeaderComponent } from './shared/components/header/header.component'
 		HttpClientModule,
 		AppRouting,
 		AuthModule,
+		GlobalFeedModule,
 		HeaderComponent,
 		StoreModule.forRoot({}),
 		StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
