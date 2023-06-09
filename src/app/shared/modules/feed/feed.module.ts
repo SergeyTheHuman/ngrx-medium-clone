@@ -9,6 +9,8 @@ import { GetFeedEffect } from '@shared/modules/feed/store/effects/get-feed.effec
 import { feedReducers } from '@shared/modules/feed/store/reducers/reducers'
 import { ArticleMetaComponent } from './components/article-meta/article-meta.component'
 import { ArticleComponent } from './components/article/article.component'
+import { ErrorMessageComponent } from '@shared/components/error-message/error-message.component'
+import { LoaderComponent } from '@shared/components/loader/loader.component'
 
 @NgModule({
 	declarations: [FeedComponent, ArticleComponent, ArticleMetaComponent],
@@ -17,6 +19,8 @@ import { ArticleComponent } from './components/article/article.component'
 		RouterModule,
 		StoreModule.forFeature('feed', feedReducers),
 		EffectsModule.forFeature([GetFeedEffect]),
+		ErrorMessageComponent,
+		LoaderComponent
 	],
 	exports: [FeedComponent],
 	providers: [FeedService],
