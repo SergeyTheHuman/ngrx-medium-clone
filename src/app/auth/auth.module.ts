@@ -10,6 +10,7 @@ import { EffectsModule } from '@ngrx/effects'
 import { StoreModule } from '@ngrx/store'
 import { BackendErrorMessagesComponent } from '@shared/components/backend-error-messages/backend-error-messages.component'
 import { PersistanceService } from '@shared/services/persistance.service'
+import { UtilsService } from '@shared/utils/utils.service'
 import { AuthRouting } from '@src/app/auth/auth.routing'
 import { RegisterPage } from '@src/app/auth/pages/register/register.component'
 import { AuthInputComponent } from './components/auth-input/auth-input.component'
@@ -37,6 +38,6 @@ import { LoginPage } from './pages/login/login.component'
 		LoginPage,
 		AuthLoginFormComponent,
 	],
-	providers: [AuthService, PersistanceService],
+	providers: [AuthService, UtilsService, PersistanceService],
 })
 export class AuthModule {}

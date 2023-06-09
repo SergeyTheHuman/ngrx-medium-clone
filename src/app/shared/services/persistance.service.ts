@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core'
-import { isString } from '@shared/utils/is-string.type-guard'
+import { UtilsService } from '@shared/utils/utils.service'
 
 @Injectable()
 export class PersistanceService {
+	constructor(private readonly utilsService: UtilsService) {}
+
 	set(key: string, data: any): void {
 		try {
 			window.localStorage.setItem(key, JSON.stringify(data))
@@ -15,7 +17,7 @@ export class PersistanceService {
 		try {
 			const data = window.localStorage.getItem(key)
 
-			return isString(data) ? JSON.parse(data) : null
+			return this.utilsService.isString(data) ? JSON.parse(data) : null
 		} catch (error) {
 			console.error('Error while getting data from local storage >>> ', error)
 			return null

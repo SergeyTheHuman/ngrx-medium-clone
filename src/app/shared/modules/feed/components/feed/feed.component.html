@@ -8,5 +8,10 @@
 		*ngFor="let article of (feed$ | async)?.articles"
 		[article]="article"
 	></mc-article>
-	PAGINATION
+	<mc-pagination
+		[total]="(feed$ | async)?.articlesCount || 10"
+		[limit]="limit"
+		[currentPage]="currentPage"
+		[url]="baseUrl"
+	></mc-pagination>
 </div>

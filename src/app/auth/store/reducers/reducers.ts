@@ -5,7 +5,7 @@ import { loginReducers } from '@auth/store/reducers/login'
 import { registerReducers } from '@auth/store/reducers/register'
 import { AuthStateInterface } from '@auth/store/types/auth-state.interface'
 
-const initialState: AuthStateInterface = {
+const authInitialState: AuthStateInterface = {
 	isAuthPending: false,
 	isUserLoading: false,
 	user: null,
@@ -14,7 +14,7 @@ const initialState: AuthStateInterface = {
 }
 
 const authReducer = createReducer(
-	initialState,
+	authInitialState,
 	...registerReducers,
 	...loginReducers,
 	...getCurrentUserReducers,
