@@ -6,6 +6,7 @@ import { StoreModule } from '@ngrx/store'
 import { ErrorMessageComponent } from '@shared/components/error-message/error-message.component'
 import { LoaderComponent } from '@shared/components/loader/loader.component'
 import { PaginationComponent } from '@shared/components/pagination/pagination.component'
+import { TagsListComponent } from '@shared/components/tags-list/tags-list.component'
 import { FeedComponent } from '@shared/modules/feed/components/feed/feed.component'
 import { FeedService } from '@shared/modules/feed/services/feed.service'
 import { GetFeedEffect } from '@shared/modules/feed/store/effects/get-feed.effect'
@@ -23,6 +24,7 @@ import { ArticleComponent } from './components/article/article.component'
 		EffectsModule.forFeature([GetFeedEffect]),
 		ErrorMessageComponent,
 		LoaderComponent,
+		TagsListComponent,
 	],
 	exports: [FeedComponent],
 	providers: [FeedService],
