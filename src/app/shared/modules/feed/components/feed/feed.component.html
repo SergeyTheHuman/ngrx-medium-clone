@@ -3,15 +3,18 @@
 	*ngIf="error$ | async"
 	[message]="error$ | async"
 ></mc-error-message>
-<div *ngIf="feed$ | async">
-	<mc-article
-		*ngFor="let article of (feed$ | async)?.articles"
-		[article]="article"
-	></mc-article>
-	<mc-pagination
-		[total]="(feed$ | async)?.articlesCount || 10"
-		[limit]="limit"
-		[currentPage]="currentPage"
-		[url]="baseUrl"
-	></mc-pagination>
+<div *ngIf="feed$ | async as feed">
+	<ng-container *ngIf="feed?.articles?.length; else noArticles">
+		<mc-article
+			*ngFor="let article of feed?.articles"
+			[article]="article"
+		></mc-article>
+		<mc-pagination
+			[total]="feed?.articlesCount || 10"
+			[limit]="limit"
+			[currentPage]="currentPage"
+			[url]="baseUrl"
+		></mc-pagination>
+	</ng-container>
+	<ng-template #noArticles>No articles found...</ng-template>
 </div>

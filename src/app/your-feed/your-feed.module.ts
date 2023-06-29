@@ -4,18 +4,18 @@ import { BannerComponent } from '@shared/components/banner/banner.component'
 import { FeedTogglerComponent } from '@shared/components/feed-toggler/feed-toggler.component'
 import { FeedModule } from '@shared/modules/feed/feed.module'
 import { PopularTagsModule } from '@shared/modules/popular-tags/popular-tags.module'
-import { GlobalFeedRouting } from '@src/app/global-feed/global-feed.routing'
-import { GlobalFeedPage } from '@src/app/global-feed/pages/global-feed.page'
+import { YourFeedPage } from '@src/app/your-feed/pages/your-feed.page'
+import { YourFeedRouting } from '@src/app/your-feed/your-feed.routing'
 
 @NgModule({
 	imports: [
 		CommonModule,
-		GlobalFeedRouting,
+		YourFeedRouting,
 		FeedModule,
 		BannerComponent,
 		PopularTagsModule,
 		FeedTogglerComponent,
 	],
-	declarations: [GlobalFeedPage],
+	declarations: [YourFeedPage],
 })
-export class GlobalFeedModule {}
+export class YourFeedModule {}

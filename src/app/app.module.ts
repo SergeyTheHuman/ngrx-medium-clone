@@ -12,6 +12,8 @@ import { AppComponent } from '@src/app/app.component'
 import { AppRouting } from '@src/app/app.routing'
 import { AuthModule } from '@src/app/auth/auth.module'
 import { GlobalFeedModule } from '@src/app/global-feed/global-feed.module'
+import { TagFeedModule } from '@src/app/tag-feed/tag-feed.module'
+import { YourFeedModule } from '@src/app/your-feed/your-feed.module'
 import { HeaderComponent } from './shared/components/header/header.component'
 
 @NgModule({
@@ -22,6 +24,8 @@ import { HeaderComponent } from './shared/components/header/header.component'
 		AppRouting,
 		AuthModule,
 		GlobalFeedModule,
+		YourFeedModule,
+		TagFeedModule,
 		HeaderComponent,
 		StoreModule.forRoot({ router: routerReducer }),
 		StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),

@@ -2,8 +2,10 @@ import {
 	ChangeDetectionStrategy,
 	Component,
 	Input,
+	OnChanges,
 	OnDestroy,
 	OnInit,
+	SimpleChanges,
 } from '@angular/core'
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { environment } from '@environments/environment'
@@ -23,7 +25,7 @@ import { Observable, Subject, takeUntil } from 'rxjs'
 	styleUrls: ['./feed.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FeedComponent implements OnInit, OnDestroy {
+export class FeedComponent implements OnInit, OnDestroy, OnChanges {
 	@Input('apiUrl')
 	apiUrlInput!: string
 
@@ -45,6 +47,11 @@ export class FeedComponent implements OnInit, OnDestroy {
 	ngOnInit(): void {
 		this.initializeVariables()
 		this.initializeListeners()
+	}
+
+	ngOnChanges(changes: SimpleChanges): void {
+		this.currentPage = 1
+		this.fetchData()
 	}
 
 	ngOnDestroy(): void {
