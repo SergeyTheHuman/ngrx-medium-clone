@@ -35,6 +35,9 @@ export class FeedComponent implements OnInit, OnChanges {
 	limit!: number
 	baseUrl!: string
 	currentPage!: number
+	queryParams$: Observable<Params> = this.route.queryParams.pipe(
+		takeUntilDestroyed(),
+	)
 
 	constructor(
 		private readonly store: Store<FeedStateInterface>,
@@ -61,12 +64,10 @@ export class FeedComponent implements OnInit, OnChanges {
 	}
 
 	initializeListeners() {
-		this.route.queryParams
-			.pipe(takeUntilDestroyed())
-			.subscribe((params: Params) => {
-				this.currentPage = +params['page'] || 1
-				this.fetchData()
-			})
+		this.queryParams$.subscribe((params: Params) => {
+			this.currentPage = +params['page'] || 1
+			this.fetchData()
+		})
 	}
 
 	fetchData(): void {
