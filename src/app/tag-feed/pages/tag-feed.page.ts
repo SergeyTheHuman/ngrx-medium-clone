@@ -1,17 +1,17 @@
-import { Component, OnDestroy, OnInit } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { ActivatedRoute } from '@angular/router'
-import { map, Observable, Subject, takeUntil, tap } from 'rxjs'
+import { map, Observable, tap } from 'rxjs'
 
 @Component({
 	selector: 'mc-tag-feed',
 	templateUrl: './tag-feed.page.html',
 	styleUrls: ['./tag-feed.page.scss'],
 })
-export class TagFeedPage implements OnInit, OnDestroy {
+export class TagFeedPage implements OnInit {
 	apiUrl!: string
 	tagName!: string | null
 	tagName$!: Observable<string | null>
-	destroy$: Subject<string> = new Subject()
 
 	constructor(private readonly route: ActivatedRoute) {}
 
@@ -19,14 +19,9 @@ export class TagFeedPage implements OnInit, OnDestroy {
 		this.initializeVariables()
 	}
 
-	ngOnDestroy(): void {
-		this.destroy$.next('')
-		this.destroy$.complete()
-	}
-
 	initializeVariables() {
 		this.tagName$ = this.route.paramMap.pipe(
-			takeUntil(this.destroy$),
+			takeUntilDestroyed(),
 			map((params) => params.get('slag')),
 			tap((slag) => (this.apiUrl = `/articles?tag=${slag}`)),
 		)

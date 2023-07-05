@@ -3,10 +3,10 @@ import {
 	Component,
 	Input,
 	OnChanges,
-	OnDestroy,
 	OnInit,
 	SimpleChanges,
 } from '@angular/core'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { environment } from '@environments/environment'
 import { select, Store } from '@ngrx/store'
@@ -17,7 +17,7 @@ import { feedSelector } from '@shared/modules/feed/store/selectors/feed.selector
 import { FeedStateInterface } from '@shared/modules/feed/types/feed-state.interface'
 import { GetFeedResponseInterface } from '@shared/modules/feed/types/get-feed-response.interface'
 import queryString from 'query-string'
-import { Observable, Subject, takeUntil } from 'rxjs'
+import { Observable } from 'rxjs'
 
 @Component({
 	selector: 'mc-feed',
@@ -25,11 +25,9 @@ import { Observable, Subject, takeUntil } from 'rxjs'
 	styleUrls: ['./feed.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FeedComponent implements OnInit, OnDestroy, OnChanges {
+export class FeedComponent implements OnInit, OnChanges {
 	@Input('apiUrl')
 	apiUrlInput!: string
-
-	destroy$: Subject<string> = new Subject()
 
 	isLoading$!: Observable<boolean>
 	error$!: Observable<string | null>
@@ -54,11 +52,6 @@ export class FeedComponent implements OnInit, OnDestroy, OnChanges {
 		this.fetchData()
 	}
 
-	ngOnDestroy(): void {
-		this.destroy$.next('')
-		this.destroy$.complete()
-	}
-
 	initializeVariables(): void {
 		this.isLoading$ = this.store.pipe(select(isFeedLoadingSelector))
 		this.error$ = this.store.pipe(select(errorFeedSelector))
@@ -69,7 +62,7 @@ export class FeedComponent implements OnInit, OnDestroy, OnChanges {
 
 	initializeListeners() {
 		this.route.queryParams
-			.pipe(takeUntil(this.destroy$))
+			.pipe(takeUntilDestroyed())
 			.subscribe((params: Params) => {
 				this.currentPage = +params['page'] || 1
 				this.fetchData()
